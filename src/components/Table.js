@@ -13,7 +13,7 @@ class Table extends React.Component {
           <div key={item.objectID} className="list-group-item">
             <h4>{item.title}</h4>
             <div className="post-detail">
-              <small>{item.points}</small>
+              <small>{item.points} points</small>
               <span>|</span>
               <small>{item.author}</small>
               <span>|</span>

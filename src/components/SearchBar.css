@@ -17,13 +17,15 @@
 }
 
 .input-control {
-  width: 80%;
+  width: 75%;
   font-size: 1.2rem;
   border: none;
   margin: 0;
   padding: 5px 0;
-  line-height: 1.2;
+  padding-left: 10px;
+  /* line-height: 1.2; */
   display: table-cell;
+  outline: none;
 }
 
 .btn-control {
@@ -34,13 +36,14 @@
   padding: 5px 10px;
   background: #efefde;
   color: #58673c;
-  line-height: 1.2;
+  /* line-height: 1.2; */
   display: table-cell;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 516px) {
   .input-control {
-    width: 70%;
+    width: 65%;
   }
   .btn-control {
     width: 30%;

@@ -1,0 +1,48 @@
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputbar {
+  width: 80%;
+  display: table;
+}
+
+@media only screen and (max-width: 950px) {
+  .inputbar {
+    width: 90%;
+  }
+}
+
+.input-control {
+  width: 80%;
+  font-size: 1.2rem;
+  border: none;
+  margin: 0;
+  padding: 5px 0;
+  line-height: 1.2;
+  display: table-cell;
+}
+
+.btn-control {
+  width: 20%;
+  border: none;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 5px 10px;
+  background: #efefde;
+  color: #58673c;
+  line-height: 1.2;
+  display: table-cell;
+}
+
+@media only screen and (max-width: 516px) {
+  .input-control {
+    width: 70%;
+  }
+  .btn-control {
+    width: 30%;
+  }
+}

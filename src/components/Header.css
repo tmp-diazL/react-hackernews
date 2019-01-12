@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  background: #58673c;
+  padding: 1em;
+}
+
+.logo {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.logo a {
+  font-size: 2.5rem;
+  color: #efefde;
+  border: 1px solid #efefde;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+  }
+  .logo {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

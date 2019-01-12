@@ -1,24 +1,40 @@
 import React from "react";
+import Pager from "./Pager";
+
+import "./Table.css";
 
 class Table extends React.Component {
   render() {
     const { list } = this.props;
+
     return (
       <div className="list-group">
-        {list.map(item => (
+        {list.hits.map(item => (
           <div key={item.objectID} className="list-group-item">
-            <h5>{item.title}</h5>
-            <div className="text-truncate">
-              <small className="text-muted pr-2">{item.points}</small>|
-              <small className="text-muted px-2">{item.author}</small>|
-              <small className="px-2">
-                <a href={item.url} className="text-muted">
-                  {item.url}
+            <h4>{item.title}</h4>
+            <div className="post-detail">
+              <small>{item.points}</small>
+              <span>|</span>
+              <small>{item.author}</small>
+              <span>|</span>
+              <small>
+                <a href={item.url}>
+                  {item.url || item._highlightResult.title.value}
                 </a>
               </small>
             </div>
           </div>
         ))}
+        <div
+          className="list-group-item"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            background: "#fff"
+          }}
+        >
+          <Pager nbPages={list.nbPages} onClick={this.props.onPageClick} />
+        </div>
       </div>
     );
   }

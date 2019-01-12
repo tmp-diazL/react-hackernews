@@ -1,17 +1,16 @@
 import React from "react";
+import "./SearchBar.css";
 
 const SearchBar = ({ onSubmit, onChange }) => (
-  <form onSubmit={onSubmit} className="my-4">
-    <div className="input-group">
+  <form onSubmit={onSubmit} className="form-container">
+    <div className="inputbar">
       <input
         type="text"
         name="searchTerm"
         onChange={onChange}
-        className="form-control"
+        className="input-control"
       />
-      <div className="input-group-append">
-        <button className="btn btn-info">Search</button>
-      </div>
+      <button className="btn-control">Search</button>
     </div>
   </form>
 );

@@ -1,6 +1,7 @@
 import React from "react";
-import SearchBar from "./components/SearchBar";
+import Header from "./components/Header";
 import Table from "./components/Table";
+import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class App extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.fetchPage = this.fetchPage.bind(this);
   }
 
   onChange(e) {
@@ -27,11 +29,34 @@ class App extends React.Component {
   }
 
   setStories(results) {
+    console.log(results);
     this.setState({ results });
   }
 
+  fetchPage(page) {
+    const { searchTerm } = this.state;
+
+    let url;
+    if (!searchTerm) {
+      url = `http://hn.algolia.com/api/v1/search_by_date?tags=story&page=${page}`;
+    } else {
+      url = `http://hn.algolia.com/api/v1/search?query=${searchTerm}&page=${page}`;
+    }
+
+    fetch(url)
+      .then(response => response.json())
+      .then(results => this.setStories(results));
+  }
   fetchStories(searchTerm) {
     const url = `http://hn.algolia.com/api/v1/search?query=${searchTerm}`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(results => this.setStories(results));
+  }
+
+  componentDidMount() {
+    const url = `http://hn.algolia.com/api/v1/search_by_date?tags=story`;
 
     fetch(url)
       .then(response => response.json())
@@ -42,8 +67,8 @@ class App extends React.Component {
     const { results } = this.state;
     return (
       <div className="container my-4">
-        <SearchBar onChange={this.onChange} onSubmit={this.onSubmit} />
-        {results ? <Table list={results.hits} /> : null}
+        <Header onChange={this.onChange} onSubmit={this.onSubmit} />
+        {results ? <Table list={results} onPageClick={this.fetchPage} /> : null}
       </div>
     );
   }
